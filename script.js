@@ -1,162 +1,58 @@
 const birthDate = new Date(2007, 2, 10); 
 const singleSinceDate = new Date(2025, 3, 10); 
-
-function calculateAge(dob) {
-    const today = new Date();
-    let age = today.getFullYear() - dob.getFullYear();
-    const monthDiff = today.getMonth() - dob.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-        age--;
-    }
-    return age;
-}
-
-function displayDOBInfo() {
-    const dobElement = document.getElementById('dob-info');
-    if (dobElement) {
-        const age = calculateAge(birthDate);
-        const dobString = "10/03/2007"; 
-        dobElement.innerHTML = `Ngày sinh: <b>${dobString}</b> | Tuổi: <b>${age}</b>`;
-    }
-}
-
-function updateLoveTimer() {
-    const daysContainer = document.getElementById('loveDays');
-    const timerContainer = document.getElementById('love-timer-mini');
-    
-    if (!daysContainer || !timerContainer) return; 
-
-    const now = new Date();
-    const diff = now - singleSinceDate; 
-    
-    const msInDay = 1000 * 60 * 60 * 24;
-    const totalDays = Math.floor(diff / msInDay);
-    
-    const diffRemainder = diff - (totalDays * msInDay);
-    
-    const h = Math.floor(diffRemainder / (1000 * 60 * 60));
-    const m = Math.floor((diffRemainder / (1000 * 60)) % 60);
-    const s = Math.floor((diffRemainder / 1000) % 60);
-
-    daysContainer.innerText = totalDays.toLocaleString('en-US'); 
-    
-    const units = timerContainer.querySelectorAll('.time-unit span');
-    
-    units[0].innerText = h.toString().padStart(2, '0');
-    units[1].innerText = m.toString().padStart(2, '0');
-    units[2].innerText = s.toString().padStart(2, '0');
-}
-
-function switchPage(pageId, buttonElement) {
-    document.querySelectorAll('.page-section').forEach(page => {
-        page.classList.remove('active-page');
-        page.style.display = 'none';
-    });
-    const target = document.getElementById('page-' + pageId);
-    if (target) {
-        target.style.display = 'block';
-        setTimeout(() => target.classList.add('active-page'), 10);
-    }
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    if (buttonElement) {
-        buttonElement.classList.add('active');
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function toggleZaloQR() {
-    const modal = document.getElementById('zaloModal');
-    modal.classList.toggle('active');
-}
+const words = ["System Optimizer", "Low-Level Engineer", "Performance Enthusiast", "Future Senior Dev"]; 
 
 let player;
-let isPlaying = false; 
+let isPlaying = false;
+let isPlayerReady = false;
 let progressInterval;
+let checkDurationInterval;
 
-const progressBar = document.getElementById('progressBar');
-const currentTimeDisplay = document.getElementById('currentTime');
-const durationTimeDisplay = document.getElementById('durationTime');
-const volumeSlider = document.getElementById('volumeSlider');
-
-function formatTime(time) {
-    if (isNaN(time) || time < 0) return '0:00';
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60).toString().padStart(2, '0');
-    return `${minutes}:${seconds}`;
-}
-
-function updateProgressBar() {
-    if (player && player.getDuration) {
-        const duration = player.getDuration();
-        const currentTime = player.getCurrentTime();
-        
-        if (duration > 0 && progressBar.max != duration) {
-            progressBar.max = duration; 
-            durationTimeDisplay.innerText = formatTime(duration);
-        }
-
-        progressBar.value = currentTime;
-        currentTimeDisplay.innerText = formatTime(currentTime);
-    }
-}
-
-function seekTo(seekTime) {
-    if (player && player.getDuration) {
-        player.seekTo(seekTime, true);
-        currentTimeDisplay.innerText = formatTime(seekTime);
-    }
-}
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
 function onYouTubeIframeAPIReady() {
+    console.log("YouTube API đang khởi tạo...");
     player = new YT.Player('player', {
-        height: '1', 
-        width: '1',
+        height: '0',
+        width: '0',
         playerVars: {
-            'autoplay': 0, 
-            'controls': 0, 
-            'rel': 0, 
+            'autoplay': 0,
+            'controls': 0,
+            'rel': 0,
             'modestbranding': 1,
-            'origin': window.location.origin, 
-            'enablejsapi': 1 
+            'enablejsapi': 1,
+            'origin': window.location.origin
         },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
         }
     });
 }
 
 function onPlayerReady(event) {
-    player.cueVideoById('V3oE5m-Uu2Y'); 
+    console.log("Trình phát nhạc đã sẵn sàng.");
+    isPlayerReady = true;
     player.setVolume(50);
     
-    if (volumeSlider) {
-        volumeSlider.value = player.getVolume();
-    }
-    
-    document.getElementById('currentSong').innerText = "Chọn bài để phát";
-    
+    const volumeSlider = document.getElementById('volumeSlider');
+    if (volumeSlider) volumeSlider.value = 50;
+
     const firstSong = document.querySelector('#musicList li:first-child');
-    if (firstSong) firstSong.classList.add('playing');
-    
-    progressInterval = setInterval(updateProgressBar, 1000); 
+    if (firstSong) {
+        const firstId = firstSong.getAttribute('data-id');
+        player.cueVideoById(firstId);
+        firstSong.classList.add('playing');
+        document.getElementById('currentSong').innerText = firstSong.innerText;
+    }
+}
 
-    let checkDurationAttempts = 0;
-    const maxAttempts = 5;
-
-    const checkDuration = setInterval(() => {
-        const duration = player.getDuration();
-        if (duration > 0) {
-            durationTimeDisplay.innerText = formatTime(duration);
-            progressBar.max = duration; 
-            clearInterval(checkDuration); 
-        }
-        checkDurationAttempts++;
-        if (checkDurationAttempts >= maxAttempts) {
-            clearInterval(checkDuration); 
-        }
-    }, 1000);
+function onPlayerError(e) {
+    console.error("Lỗi trình phát YouTube:", e.data);
+    alert("Không thể tải video từ YouTube. Vui lòng kiểm tra kết nối mạng.");
 }
 
 function onPlayerStateChange(event) {
@@ -166,70 +62,69 @@ function onPlayerStateChange(event) {
 
     if (event.data === YT.PlayerState.PLAYING) {
         isPlaying = true;
-        playIcon.className = 'fa-solid fa-pause';
-        vinylDisk.classList.add('spinning');
+        if (playIcon) playIcon.className = 'fa-solid fa-pause';
+        if (vinylDisk) vinylDisk.classList.add('spinning');
         if (vinylGlow) vinylGlow.style.opacity = '1';
         
-        const duration = player.getDuration();
-        if (duration > 0 && durationTimeDisplay.innerText === '0:00') {
-            durationTimeDisplay.innerText = formatTime(duration);
-            progressBar.max = duration;
-        }
-
-    } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.CUED) {
+        startProgressTracking();
+    } 
+    else {
         isPlaying = false;
-        playIcon.className = 'fa-solid fa-play';
-        vinylDisk.classList.remove('spinning');
+        if (playIcon) playIcon.className = 'fa-solid fa-play';
+        if (vinylDisk) vinylDisk.classList.remove('spinning');
         if (vinylGlow) vinylGlow.style.opacity = '0.7';
+        stopProgressTracking();
     }
-    
+
     if (event.data === YT.PlayerState.ENDED) {
-        progressBar.value = 0;
-        currentTimeDisplay.innerText = '0:00';
+        console.log("Bài hát đã kết thúc.");
     }
 }
 
 function playSong(element) {
-    const videoId = element.getAttribute('data-id');
-    const songName = element.innerText;
-
-    if (!player || !videoId) {
-        alert("Trình phát nhạc chưa sẵn sàng. Vui lòng thử lại sau.");
+    if (!isPlayerReady || !player) {
+        alert("Hệ thống nhạc đang khởi động, vui lòng đợi vài giây!");
         return;
     }
 
+    const videoId = element.getAttribute('data-id');
+    const songName = element.innerText;
+
+    if (!videoId) return;
+
+    console.log("Đang phát bài:", songName);
+
     document.querySelectorAll('#musicList li').forEach(li => li.classList.remove('playing'));
     element.classList.add('playing');
-    
-    document.getElementById('currentSong').innerText = songName;
-    document.getElementById('currentPlaying').innerText = `(Đang phát: ${songName})`;
 
-    progressBar.value = 0;
-    currentTimeDisplay.innerText = '0:00';
-    durationTimeDisplay.innerText = '0:00';
+    const currentSongNameEl = document.getElementById('currentSong');
+    if (currentSongNameEl) currentSongNameEl.innerText = songName;
     
+    const statusTextEl = document.getElementById('currentPlaying');
+    if (statusTextEl) statusTextEl.innerText = `(Đang phát: ${songName})`;
+
     player.loadVideoById(videoId);
     player.playVideo();
-    
-    let checkDurationAttempts = 0;
-    const maxAttempts = 5;
 
-    const checkDuration = setInterval(() => {
+    updateDurationInfo();
+}
+
+function updateDurationInfo() {
+    clearInterval(checkDurationInterval);
+    checkDurationInterval = setInterval(() => {
         const duration = player.getDuration();
         if (duration > 0) {
-            durationTimeDisplay.innerText = formatTime(duration);
-            progressBar.max = duration; 
-            clearInterval(checkDuration); 
+            const durationDisplay = document.getElementById('durationTime');
+            const progressBar = document.getElementById('progressBar');
+            if (durationDisplay) durationDisplay.innerText = formatSeconds(duration);
+            if (progressBar) progressBar.max = Math.floor(duration);
+            clearInterval(checkDurationInterval);
         }
-        checkDurationAttempts++;
-        if (checkDurationAttempts >= maxAttempts) {
-            clearInterval(checkDuration); 
-        }
-    }, 1000); 
+    }, 500);
 }
 
 function togglePlay() {
-    if (!player) return;
+    if (!player || !isPlayerReady) return;
     if (isPlaying) {
         player.pauseVideo();
     } else {
@@ -237,95 +132,176 @@ function togglePlay() {
     }
 }
 
+function startProgressTracking() {
+    clearInterval(progressInterval);
+    progressInterval = setInterval(() => {
+        if (player && isPlaying) {
+            const currentTime = player.getCurrentTime();
+            const progressBar = document.getElementById('progressBar');
+            const timeDisplay = document.getElementById('currentTime');
+            
+            if (progressBar) progressBar.value = Math.floor(currentTime);
+            if (timeDisplay) timeDisplay.innerText = formatSeconds(currentTime);
+        }
+    }, 1000);
+}
+
+function stopProgressTracking() {
+    clearInterval(progressInterval);
+}
+
+function seekTo(value) {
+    if (player) player.seekTo(value, true);
+}
+
 function changeVolume(value) {
     if (player) player.setVolume(value);
 }
 
-function toggleMute() {
-    const muteIcon = document.getElementById('muteButton');
-    if (!player) return;
+function formatSeconds(s) {
+    const mins = Math.floor(s / 60);
+    const secs = Math.floor(s % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
 
-    if (player.isMuted()) {
-        player.unMute();
-        muteIcon.className = 'fa-solid fa-volume-high';
-        volumeSlider.value = player.getVolume();
-    } else {
-        player.mute();
-        muteIcon.className = 'fa-solid fa-volume-xmark';
-        volumeSlider.value = 0;
+
+function updateClock() {
+    const clockEl = document.getElementById('clock');
+    if (clockEl) {
+        const now = new Date();
+        clockEl.innerText = now.toLocaleTimeString('vi-VN', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
     }
 }
 
-function togglePlayerControls() {
-    const controls = document.getElementById('playerControls');
-    if (controls) {
-        controls.classList.toggle('active');
+function updateLoveTimer() {
+    const daysContainer = document.getElementById('loveDays');
+    if (!daysContainer) return;
+
+    const now = new Date();
+    const diff = now - singleSinceDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    daysContainer.innerText = days.toLocaleString('en-US');
+
+    const units = document.querySelectorAll('.time-unit span');
+    if (units.length >= 3) {
+        units[0].innerText = hours.toString().padStart(2, '0');
+        units[1].innerText = mins.toString().padStart(2, '0');
+        units[2].innerText = secs.toString().padStart(2, '0');
     }
 }
 
-const words = ["System Optimizer", "Low-Level Engineer", "Performance Enthusiast", "Future Senior Dev"]; 
-let wordIndex = 0, charIndex = 0, isDeleting = false; 
-
-function type() { 
-    const typingText = document.querySelector(".typing-text");
-    if (!typingText) return; 
-    const current = words[wordIndex]; 
-    typingText.textContent = current.substring(0, isDeleting ? --charIndex : ++charIndex); 
-
-    if(!isDeleting && charIndex === current.length) { 
-        isDeleting = true; 
-        setTimeout(type, 2000); 
-    } else if(isDeleting && charIndex === 0) { 
-        isDeleting = false; 
-        wordIndex = (wordIndex + 1) % words.length; 
-        setTimeout(type, 500); 
-    } else {
-        setTimeout(type, isDeleting ? 100 : 200);
-    }
-} 
-
-function toggleTheme() { 
-    const body = document.body;
-    const icon = document.getElementById('themeIcon'); 
-    if(body.getAttribute('data-theme')==='dark') { 
-        body.removeAttribute('data-theme'); 
-        icon.className='fa-solid fa-moon'; 
-        localStorage.setItem('theme','light'); 
-    } else { 
-        body.setAttribute('data-theme','dark'); 
-        icon.className='fa-solid fa-sun'; 
-        localStorage.setItem('theme','dark'); 
-    } 
-}
-
-window.onload = function() { 
-    if(localStorage.getItem('theme')==='dark') { 
-        document.body.setAttribute('data-theme','dark'); 
-        const icon = document.getElementById('themeIcon');
-        if(icon) icon.className='fa-solid fa-sun'; 
-    } 
-
-    setInterval(() => { 
-        const clockElement = document.getElementById('clock');
-        if(clockElement) {
-            clockElement.innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit', second: '2-digit'});
+function displayDOBInfo() {
+    const dobEl = document.getElementById('dob-info');
+    if (dobEl) {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        if (today.getMonth() < birthDate.getMonth() || 
+           (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+            age--;
         }
-        updateLoveTimer(); 
-    }, 1000); 
-    
-    displayDOBInfo();
-    type();
-};
-
-window.onscroll = () => { 
-    document.querySelectorAll('.reveal').forEach(el => { 
-        if(el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('active'); 
-    }); 
-    
-    const btn = document.querySelector('.scroll-up-btn'); 
-    if(btn) window.scrollY > 300 ? btn.classList.add('show') : btn.classList.remove('show'); 
-};
-
-function scrollToTop() { 
-    window.scrollTo({top: 0, behavior: 'smooth'}); 
+        dobEl.innerHTML = `Ngày sinh: <b>10/03/2007</b> | Tuổi: <b>${age}</b>`;
+    }
 }
+
+
+function typeEffect() {
+    const textEl = document.querySelector(".typing-text");
+    if (!textEl) return;
+
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+        textEl.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        textEl.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 100 : 200;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+}
+
+function switchPage(pageId, btn) {
+    document.querySelectorAll('.page-section').forEach(p => {
+        p.classList.remove('active-page');
+        p.style.display = 'none';
+    });
+    
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+        target.style.display = 'block';
+        setTimeout(() => target.classList.add('active-page'), 20);
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+window.onload = function() {
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.className = 'fa-solid fa-sun';
+    }
+
+    setInterval(() => {
+        updateClock();
+        updateLoveTimer();
+    }, 1000);
+
+    displayDOBInfo();
+    typeEffect();
+};
+
+window.onscroll = () => {
+    document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 150) {
+            el.classList.add('active');
+        }
+    });
+
+    const scrollBtn = document.querySelector('.scroll-up-btn');
+    if (scrollBtn) {
+        window.scrollY > 300 ? scrollBtn.classList.add('show') : scrollBtn.classList.remove('show');
+    }
+};
+
+
+function toggleTheme() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('themeIcon').className = 'fa-solid fa-sun';
+    }
+}
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function toggleZaloQR() { document.getElementById('zaloModal').classList.toggle('active'); }
+function togglePlayerControls() { document.getElementById('playerControls').classList.toggle('active'); }
