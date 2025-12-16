@@ -274,42 +274,62 @@
     </div>
 
     <div id="page-love" class="page-section">
-        <div class="love-page-container">
-            <div class="love-card-premium">
-                <div class="love-content">
-                    <h2 class="love-title">Tổng Ngày Độc Thân</h2>
-                    <div class="main-heart-container">
-                        <i class="fa-solid fa-heart main-heart-icon"></i>
-                        <div class="days-counter">
-                            <span style="font-size: 4.5rem; font-weight: 800; background: var(--love-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; line-height: 1.2;" id="loveDays">0</span>
-                            <p class="days-label">Ngày</p>
-                        </div>
-                    </div>
-                    
-                    <div class="love-timer-mini" id="love-timer-mini">
-                        <div class="time-unit"><span>00</span><p>Ngày</p></div>
-                        <span class="time-divider">:</span>
-                        <div class="time-unit"><span>00</span><p>Giờ</p></div>
-                        <span class="time-divider">:</span>
-                        <div class="time-unit"><span>00</span><p>Phút</p></div>
-                        <span class="time-divider">:</span>
-                        <div class="time-unit"><span>00</span><p>Giây</p></div>
-                    </div>
-                    
-                    <div style="margin: 30px 0; font-size: 1.8rem; color: var(--text-sub);">
-                        <i class="fa-solid fa-code" style="margin: 0 15px; color: var(--primary);"></i>
-                        <i class="fa-solid fa-gamepad" style="margin: 0 15px; color: var(--accent);"></i>
-                        <i class="fa-solid fa-headphones" style="margin: 0 15px; color: #ff4757;"></i>
-                    </div>
-                    <p class="love-quote-premium">
-                        "Hoa chưa có chủ, mà chủ cũng chưa cần hoa.<br>
-                        Hiện tại mình chỉ tập trung vào <b>Code</b> và <b>Sự nghiệp</b> thôi!"
-                    </p>
-                </div>
-                <div class="love-bg-effect"></div>
+    <div class="love-page-container">
+        <div class="glass-card reveal" style="max-width: 400px; margin: 0 auto 40px;">
+            <h3 class="section-title" style="margin-bottom: 20px; font-size: 1.5rem;">
+                <i class="fa-solid fa-heart-crack" style="color: var(--love);"></i> 
+                Mối tình đã qua
+            </h3>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p style="font-size: 1rem; color: var(--text-sub);">
+                    Thời gian: <span id="pastLoveDates" style="font-weight: 600; color: var(--text-main);">Đang tính...</span>
+                </p>
+            </div>
+            <div style="text-align: center; padding: 20px; background: var(--card-hover); border-radius: 10px;">
+                <p style="font-size: 1.2rem; color: var(--text-sub); margin-bottom: 5px;">
+                    Tổng thời gian
+                </p>
+                <span id="pastLoveDuration" style="font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.2;">
+                    Đang tính...
+                </span>
             </div>
         </div>
+        
+        <div class="love-card-premium reveal" style="margin-top: 40px;">
+            <div class="love-content">
+                <h2 class="love-title">Tổng Ngày Độc Thân</h2>
+                <div class="main-heart-container">
+                    <i class="fa-solid fa-heart main-heart-icon"></i>
+                    <div class="days-counter">
+                        <span style="font-size: 4.5rem; font-weight: 800; background: var(--love-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; line-height: 1.2;" id="loveDays">0</span>
+                        <p class="days-label">Ngày</p>
+                    </div>
+                </div>
+                
+                <div class="love-timer-mini" id="love-timer-mini">
+                    <div class="time-unit"><span>00</span><p>Ngày</p></div>
+                    <span class="time-divider">:</span>
+                    <div class="time-unit"><span>00</span><p>Giờ</p></div>
+                    <span class="time-divider">:</span>
+                    <div class="time-unit"><span>00</span><p>Phút</p></div>
+                    <span class="time-divider">:</span>
+                    <div class="time-unit"><span>00</span><p>Giây</p></div>
+                </div>
+                
+                <div style="margin: 30px 0; font-size: 1.8rem; color: var(--text-sub);">
+                    <i class="fa-solid fa-code" style="margin: 0 15px; color: var(--primary);"></i>
+                    <i class="fa-solid fa-gamepad" style="margin: 0 15px; color: var(--accent);"></i>
+                    <i class="fa-solid fa-headphones" style="margin: 0 15px; color: #ff4757;"></i>
+                </div>
+                <p class="love-quote-premium">
+                    "Hoa chưa có chủ, mà chủ cũng chưa cần hoa.<br>
+                    Hiện tại mình chỉ tập trung vào <b>Code</b> và <b>Sự nghiệp</b> thôi!"
+                </p>
+            </div>
+            <div class="love-bg-effect"></div>
+        </div>
     </div>
+</div>
 
     <div id="zaloModal" class="qr-modal" onclick="toggleZaloQR()">
         <div class="qr-content" onclick="event.stopPropagation()">
