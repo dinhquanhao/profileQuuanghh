@@ -330,3 +330,4 @@ document.addEventListener('click', function(event) {
         avatarWrapper.classList.remove('zoomed');
     }
 });
+
