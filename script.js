@@ -265,6 +265,17 @@ window.onload = function() {
         if (icon) icon.className = 'fa-solid fa-sun';
     }
 
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
+        });
+    }
+    // ------------------------------
+
     setInterval(() => {
         updateClock();
         updateLoveTimer();
