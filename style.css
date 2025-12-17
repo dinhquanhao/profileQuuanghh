@@ -896,7 +896,7 @@ footer {
     background: var(--accent);
 }
 
-#player {
+#player { 
     position: fixed;
     bottom: -100px; 
     left: 0;
