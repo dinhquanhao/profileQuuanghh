@@ -12,7 +12,6 @@ let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
-<<<<<<< HEAD
 function updateLifeTimer(){
 
     const now = new Date();
@@ -32,8 +31,6 @@ function updateLifeTimer(){
 
 setInterval(updateLifeTimer,1000);
 
-=======
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
 function onYouTubeIframeAPIReady() {
     console.log("YouTube API đang khởi tạo...");
     player = new YT.Player('player', {
@@ -296,18 +293,9 @@ window.onload = function() {
             }, 300);
         });
     }
-<<<<<<< HEAD
 
     setInterval(updateClock,1000);
     setInterval(updateLoveTimer,1000);
-=======
-    // ------------------------------
-
-    setInterval(() => {
-        updateClock();
-        updateLoveTimer();
-    }, 1000);
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
 
     displayDOBInfo();
     typeEffect();
@@ -354,7 +342,6 @@ if (avatarWrapper) {
 }
 
 document.addEventListener('click', function(event) {
-<<<<<<< HEAD
     if (avatarWrapper && !avatarWrapper.contains(event.target)) {
         avatarWrapper.classList.remove('zoomed');
     }
@@ -376,9 +363,3 @@ function switchPage(page, btn){
 
     window.scrollTo(0,0)
 }
-=======
-    if (!avatarWrapper.contains(event.target)) {
-        avatarWrapper.classList.remove('zoomed');
-    }
-});
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a

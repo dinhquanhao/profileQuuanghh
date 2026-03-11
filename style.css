@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 body[data-theme="dark"] {
     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
 }
 
-=======
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
 :root { 
     --primary: #3b82f6; 
     --accent: #8b5cf6; 
@@ -29,7 +26,6 @@ body[data-theme="dark"] {
     --neon-glow: 0 0 20px rgba(59, 130, 246, 0.5); 
     --music-glow: rgba(59, 130, 246, 0.8);  
 }
-<<<<<<< HEAD
 * { margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
@@ -308,45 +304,6 @@ header {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
 }
 
-=======
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-body { background: linear-gradient(to top, #dfe9f3 0%, #ffffff 100%); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; transition: 0.5s; line-height: 1.6; min-height: 100vh; }
-[data-theme="dark"] body { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); }
-.background-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; }
-.noise-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
-.particle { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.3; mix-blend-mode: multiply; animation: drift 25s infinite alternate ease-in-out; }
-[data-theme="dark"] .particle { mix-blend-mode: screen; opacity: 0.4; filter: blur(50px); }
-.particle-1 { top: 10%; left: 20%; width: 300px; height: 300px; background: #a2d2ff; animation-duration: 30s; }
-.particle-2 { bottom: 20%; right: 15%; width: 250px; height: 250px; background: #cdb4db; animation-delay: -5s; animation-duration: 35s; }
-.particle-3 { top: 40%; right: 30%; width: 200px; height: 200px; background: #ffc8dd; opacity: 0.4; animation-delay: -10s; }
-.particle-4 { bottom: 10%; left: 30%; width: 180px; height: 180px; background: #bde0fe; animation-delay: -15s; animation-duration: 28s; }
-.particle-5 { top: 50%; left: 50%; width: 100px; height: 100px; background: #ffafcc; opacity: 0.3; animation-delay: -8s; animation-duration: 20s; }
-@keyframes drift { 0% { transform: translate(0, 0) scale(1) rotate(0deg); } 100% { transform: translate(60px, -40px) scale(1.1) rotate(15deg); } }
-.page-section { display: none; opacity: 0; transform: translateY(30px) scale(0.98); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 80px; min-height: 100vh; }
-.page-section.active-page { display: block; opacity: 1; transform: translateY(0) scale(1);animation: slideUpFade 0.8s ease-out forwards; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.love-page-container { display: flex; align-items: center; justify-content: center; min-height: 80vh; width: 100%; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-header { position: fixed; width: 100%; top: 0; z-index: 100; padding: 15px 0; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-[data-theme="dark"] header { background: rgba(15,23,42,0.7); }
-.nav-content { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 700; }
-.nav-links { display: flex; gap: 5px; background: var(--glass); padding: 5px; border-radius: 50px; border: 1px solid var(--border); }
-.nav-btn { background: transparent; border: none; padding: 8px 20px; border-radius: 20px; color: var(--text-sub); font-weight: 600; cursor: pointer; transition: 0.3s; font-family: inherit; }
-.nav-btn:hover { color: var(--primary); background: var(--card-hover); }
-.nav-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
-[data-theme="dark"] .nav-links { background: rgba(30,41,59,0.5); }
-.header-right { display: flex; gap: 15px; align-items: center; }
-.digital-clock { font-family: monospace; font-weight: bold; color: var(--primary); background: var(--glass); padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border); display: none; }
-@media (min-width: 768px) { .digital-clock { display: block; } }
-.theme-toggle { background: var(--glass); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; color: var(--text-main); cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-.theme-toggle:hover { background: var(--primary); color: white; }
-.hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-.avatar-wrapper { position: relative; width: 180px; height: 180px; margin: 0 auto 30px; }
-.avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
 [data-theme="dark"] .avatar-img { border-color: #0f172a; box-shadow: var(--neon-glow); }
 .status-dot { position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px; background: #2ecc71; border-radius: 50%; border: 3px solid #fff; }
 [data-theme="dark"] .status-dot { border-color: #0f172a; }
@@ -388,15 +345,6 @@ header { position: fixed; width: 100%; top: 0; z-index: 100; padding: 15px 0; ba
     box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); 
 }
 
-<<<<<<< HEAD
-=======
-.dc:hover { 
-    background: #5865F2; 
-    color: white; 
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); 
-}
-
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
 .mail:hover { 
     background: #EA4335; 
     color: white; 
@@ -1216,7 +1164,6 @@ footer {
     0% { transform: scale(0.5); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
-<<<<<<< HEAD
 
 @keyframes slideUpFade {
     from {
@@ -1233,5 +1180,3 @@ footer {
     transform: scale(1.8);
     z-index: 999;
 }
-=======
->>>>>>> d3c966c74e0422a27be35dc78e0d737e7b2ce18a
