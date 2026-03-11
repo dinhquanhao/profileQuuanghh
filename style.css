@@ -664,7 +664,7 @@ header {
     position: absolute; 
     top: 50%; left: 50%; 
     transform: translate(-50%, -50%);
-    animation: pulse-beat 1.4s infinite ease-in-out; 
+    animation: none; 
 }
 
 @keyframes pulse-beat { 
@@ -1179,4 +1179,149 @@ footer {
 .avatar-wrapper.zoomed {
     transform: scale(1.8);
     z-index: 999;
+}
+
+
+@media (max-width: 768px) {
+
+    body{
+        font-size:14px;
+    }
+
+    /* header */
+    header{
+        padding:10px 0;
+    }
+
+    .logo{
+        font-size:1.2rem;
+    }
+
+    .nav-links{
+        gap:3px;
+        padding:3px;
+    }
+
+    .nav-btn{
+        padding:6px 10px;
+        font-size:0.8rem;
+    }
+
+    .digital-clock{
+        display:none;
+    }
+
+    .hero{
+        min-height:70vh;
+        padding:20px 0;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .avatar-wrapper{
+        width:130px;
+        height:130px;
+        margin-bottom:20px;
+    }
+
+    .social-links{
+        gap:10px;
+    }
+
+    .social-icon{
+        width:40px;
+        height:40px;
+        font-size:1rem;
+    }
+
+    .btn{
+        padding:10px 20px;
+        font-size:0.9rem;
+    }
+
+    .container{
+        padding:0 15px;
+    }
+
+    .glass-card{
+        padding:20px;
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .stats-row{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .skill-info{
+        font-size:0.85rem;
+    }
+
+    .timeline::after{
+        left:20px;
+    }
+
+    .timeline-item{
+        width:100%;
+        padding-left:60px;
+        padding-right:10px;
+    }
+
+    .timeline-item::after{
+        left:10px;
+    }
+
+    .left,
+    .right{
+        left:0;
+    }
+
+    .left::before,
+    .right::before{
+        display:none;
+    }
+
+    .marquee-content span{
+        font-size:1.2rem;
+        margin:0 20px;
+    }
+
+    .love-title{
+        font-size:2rem;
+    }
+
+    #loveDays{
+        font-size:3rem;
+    }
+
+    .time-unit{
+        min-width:50px;
+        padding:6px 10px;
+    }
+
+    .time-unit span{
+        font-size:1rem;
+    }
+
+    #page-crush img{
+        width:140px;
+        height:140px;
+    }
+
+    .scroll-up-btn{
+        right:15px;
+        bottom:15px;
+        width:40px;
+        height:40px;
+    }
+
+    .main-heart-icon{
+        font-size:6rem;
+    }
 }
