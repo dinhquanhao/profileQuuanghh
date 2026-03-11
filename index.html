@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXHK8LHCVC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXHK8LHCVC');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Đinh Quang Hào | Software Engineer & System Optimizer</title>
+    <meta name="description" content="Hồ sơ cá nhân của Đinh Quang Hào - Chuyên gia tối ưu hóa hệ thống, lập trình viên C++ và Full-stack Web tại TP. Hồ Chí Minh.">
+    <meta name="keywords" content="Đinh Quang Hào, Đinh Quang Hào Cao Bằng, Đinh Quang Hào Portfolio, Quuanghh, System Optimizer, C++ Developer">
+    <meta name="author" content="Đinh Quang Hào">
+
+    <meta property="og:title" content="Đinh Quang Hào | Portfolio Cá Nhân">
+    <meta property="og:description" content="Khám phá hành trình và các dự án công nghệ của Đinh Quang Hào.">
+    <meta property="og:image" content="avatar.jpg"> 
+    <meta property="og:url" content="https://fshi0206-arch.github.io/profileQuuanghh/"> 
+    <link rel="canonical" href="https://fshi0206-arch.github.io/profileQuuanghh/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Đinh Quang Hào",
+      "url": "https://fshi0206-arch.github.io/profileQuuanghh/",
+      "jobTitle": "Software Engineer",
+      "alumniOf": "TP. Hồ Chí Minh",
+      "sameAs": [
+        "https://www.facebook.com/share/1Ctb9f6psq/",
+        "https://github.com/fshi0206-arch",
+        "https://tiktok.com/@quanghao.18",
+        "https://locket.cam/qquanghhao"
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-animation">
+        <div class="noise-overlay"></div>
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+    </div>
+
+    <div class="scroll-up-btn" onclick="scrollToTop()">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <header>
+        <div class="container nav-content">
+            <div class="logo" onclick="location.reload()" style="cursor: pointer;">Quuanghh</div>
+            <div class="nav-links">
+                <button class="nav-btn active" onclick="switchPage('home', this)">Hồ Sơ</button>
+                <button class="nav-btn" onclick="switchPage('love', this)">Happy birthdate</button>
+                <button class="nav-btn" onclick="switchPage('crush', this)">Crush ❤️</button>
+            </div>
+            <div class="header-right">
+                <div class="digital-clock" id="clock">00:00:00</div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="page-home" class="page-section active-page">
+        <section class="hero reveal">
+            <div class="container">
+                <div class="avatar-wrapper">
+                    <img src="avatar.jpg.png" 
+                             onerror="this.src='avatar.jpg'; this.onerror=function(){this.src='https://cdn-icons-png.flaticon.com/512/11498/11498793.png'}" 
+                             alt="Avatar" class="avatar-img">
+                    <div class="status-dot"></div>
+                </div>
+                
+                <h1><span>Đinh Quang Hào</span></h1>
+                
+                <p id="dob-info" style="color: var(--text-sub); margin-top: -10px; font-size: 1.1rem; font-weight: 500;">
+                    Ngày sinh: Đang tính...
+                </p>
+                
+                <p>I am a <span class="typing-text"></span><span class="cursor">|</span></p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1Ctb9f6psq/" target="_blank" class="social-icon fb" data-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://m.me/quanghao0310" target="_blank" class="social-icon mess" data-title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href="https://zalo.me/0363044482" target="_blank" class="social-icon zalo" data-title="Zalo">Z</a>
+                    <a href="https://www.tiktok.com/@hafo10032007" target="_blank" class="social-icon tiktok" data-title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.com/users/waifanabyss" target="_blank" class="social-icon dc" data-title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://github.com/fshi0206-arch" target="_blank" class="social-icon gh" data-title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:fshi0206@gmail.com" target="_blank" class="social-icon mail" data-title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://locket.cam/qquanghhao" target="_blank" class="social-icon locket" data-title="Locket"><div class="locket-box"><i class="fa-solid fa-heart"></i></div></a>
+                </div>
+
+                <a href="#journey" class="btn">Xem Hành Trình</a> 
+            </div>
+        </section>
+
+        <section class="container reveal">
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-user-astronaut"></i> Bản thân</h3>
+                    <p style="margin-top: 15px; color: var(--text-sub);">
+                        Mình là Đinh Quang Hào. Với mình, lập trình không chỉ là viết code, mà là nghệ thuật tinh chỉnh để phần mềm và phần cứng có thể 'giao tiếp' với nhau một cách mượt mà nhất. Là một kỹ sư yêu thích C/C++, mình tin rằng một dòng code hoàn hảo là một dòng code không chỉ chạy đúng, mà còn phải chạy thật nhanh và hiệu quả.
+                    </p>
+                    <div class="stats-row">
+                        <div class="stat"><strong>3+</strong><span>Năm kinh nghiệm</span></div>
+                        <div class="stat"><strong>80.1%</strong><span>Hiệu suất tối ưu</span></div>
+                        <div class="stat"><strong>∞</strong><span>Đam mê</span></div>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-code"></i> Kỹ năng chuyên sâu</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><span>C / C++ / DSA (Thuật toán & Hiệu suất)</span><span>90%</span></div>
+                            <div class="progress-bar"><div class="fill" style="width: 90%"></div></div>
+                            <small class="skill-desc">Cốt lõi của mọi dự án. Nắm vững STL, OOP và thiết kế thuật toán tối ưu.</small>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>PC Building & Tối ưu Hệ thống (Sys. Opt.)</span><span>95%</span></div>
+                            <div class="progress-bar"><div class="fill" style="width: 95%"></div></div>
+                            <small class="skill-desc">Chuyên gia về phần cứng, ép xung (OC) và tinh chỉnh HĐH để tối đa hóa FPS/Hiệu năng Server.</small>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Web Development (JS/React/Backend)</span><span>75%</span></div>
+                            <div class="progress-bar"><div class="fill" style="width: 75%"></div></div>
+                            <small class="skill-desc">Phát triển Full-stack cơ bản để tạo ra các ứng dụng hỗ trợ Dev và công cụ quản lý. </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card full-width-card" style="margin-bottom: 30px;">
+                <h3><i class="fa-solid fa-location-dot"></i> Thông tin Liên hệ & Địa chỉ</h3>
+                <div class="meta-item-grid">
+                    <div class="meta-item-box">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <h4>Số điện thoại</h4>
+                        <p><a href="tel:0363044482" style="color: var(--primary); font-weight: 600;">0363044482</a></p>
+                    </div>
+                    <div class="meta-item-box">
+                        <i class="fa-solid fa-house-chimney-user"></i>
+                        <h4>Quê quán</h4>
+                        <p>Ngọc Khê, Trùng Khánh, Cao Bằng</p>
+                    </div>
+                    <div class="meta-item-box">
+                        <i class="fa-solid fa-school"></i>
+                        <h4>Hiện tại (Học tập & Làm việc)</h4>
+                        <p>TP. Thủ Đức, TP. Hồ Chí Minh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card full-width-card" style="margin-bottom: 30px;">
+                <h3><i class="fa-solid fa-bolt"></i> Dự án Nổi bật (Featured Projects)</h3>
+                <div class="project-list">
+                    <div class="project-item">
+                        <h4>1. Server Config Optimizer (C++)</h4>
+                        <p>Công cụ tối ưu hóa hiệu suất và giảm thiểu rò rỉ bộ nhớ cho Game Server (ARK/ZZZ). **Kết quả:** Giảm tải CPU trung bình **15%**, tăng độ ổn định uptime **99.9%**.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>2. Low-Latency Data Stream (C)</h4>
+                        <p>Thực hiện các cấu trúc dữ liệu và thuật toán cấp thấp để xử lý luồng dữ liệu thời gian thực. **Kết quả:** Tốc độ xử lý **nhanh hơn 2x** so với các thư viện tiêu chuẩn.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>3. Personal Portfolio (React/JS)</h4>
+                        <p>Xây dựng theo kiến trúc hiện đại, tập trung vào hiệu ứng Glassmorphism và tối ưu hóa tốc độ tải trang (Web Performance).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card full-width-card" style="margin-bottom: 30px;">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Công cụ (Tooling) & Môi trường Dev</h3>
+                <div class="meta-item-grid">
+                    <div class="meta-item-box">
+                        <i class="fa-brands fa-windows"></i>
+                        <h4>Hệ điều hành</h4>
+                        <p>Windows 11 (Optimized), WSL2/Linux</p>
+                    </div>
+                    <div class="meta-item-box">
+                        <i class="fa-solid fa-code"></i>
+                        <h4>IDE/Editor</h4>
+                        <p>Visual Studio 2022, VS Code, VIM</p>
+                    </div>
+                    <div class="meta-item-box">
+                        <i class="fa-brands fa-github"></i>
+                        <h4>DevOps & Version Control</h4>
+                        <p>Git, GitHub, Docker (Basic)</p>
+                    </div>
+                    <div class="meta-item-box">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h4>Monitoring & Utilities</h4>
+                        <p>HWInfo, AIDA64, Benchmarks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container reveal" style="margin-bottom: 80px;">
+            <h2 class="section-title">Góc Nhìn & Đời Sống</h2>
+            <div class="grid-2">
+                
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-headphones-simple"></i> Âm nhạc & Thói quen</h3>
+                    <div class="meta-item">
+                        <h4><i class="fa-solid fa-music"></i> Âm nhạc yêu thích (Chill/Ballad)</h4>
+                        <p style="color: var(--text-sub); font-style: italic; font-size: 0.95rem; margin-bottom: 5px;">
+                             Mình thường code với **Lofi** hoặc **Chill Music** để giữ sự tập trung cao độ. Khi thư giãn.
+                        </p>
+                        <ul id="musicList" class="simple-list-styled music-list">
+                            <li data-id="VIDEO_ID_1" onclick="playSong(this)">Không buông</li>
+                            <li data-id="VIDEO_ID_2" onclick="playSong(this)">Ngày này năm ấy</li>
+                            <li data-id="VIDEO_ID_3" onclick="playSong(this)">Ngày tháng sau này</li>
+                            <li data-id="VIDEO_ID_4" onclick="playSong(this)">Như anh đã thấy em</li>
+                            <li data-id="VIDEO_ID_5" onclick="playSong(this)">Ngày em đẹp nhất</li>
+                        </ul>
+                    </div>
+                    <div class="meta-item">
+                        <h4><i class="fa-solid fa-bed"></i> Thói quen Ngủ</h4>
+                        <p style="color: var(--text-sub); font-size: 0.95rem;">
+                            Mình là người "Ngủ sớm" (thường trước 11:30 PM) để tối ưu hóa năng lượng cho công việc. Mục tiêu: **8 giờ/ngày** để đảm bảo code ít bug hơn.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-theater-masks"></i> Phim ảnh & Truyện tranh</h3>
+                    <div class="meta-item">
+                        <h4><i class="fa-solid fa-film"></i> Thể loại Phim Kinh dị & Tâm lý</h4>
+                        <ul class="simple-list-styled">
+                            <li>The Exorcist (1973)</li>
+                            <li>Hereditary (2018)</li>
+                            <li>The Babadook (2014)</li>
+                            <li>Get Out (2017)</li>
+                        </ul>
+                    </div>
+                    <div class="meta-item">
+                        <h4><i class="fa-solid fa-book-open"></i> Truyện tranh/Manga yêu thích</h4>
+                        <ul class="simple-list-styled">
+                            <li>Death Note</li>
+                            <li>Mushoku Tensei: Jobless Reincarnation</li>
+                            <li>The Beginning After the End</li>
+                            <li>Chainsaw Man</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="container reveal" id="journey">
+            <h2 class="section-title">Hành Trình Của Tôi</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>2022 - Khởi đầu & Dữ liệu</h3>
+                        <p>Tiếp cận lập trình với <b>C/C++</b> và cấu trúc dữ liệu cơ bản. Mở khóa niềm đam mê về logic và hiệu suất thuật toán.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>2023 - Hardware & Tối ưu hóa</h3>
+                        <p>Bắt đầu xây dựng máy tính hiệu suất cao (PC Building). Học cách tối ưu hóa phần cứng, ép xung (Overclocking), và cân bằng hệ thống để đạt hiệu năng tốt nhất.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>2024 - Backend & Hệ thống thực</h3>
+                        <p>Tham gia dự án thực tế, tập trung vào lập trình hệ thống và quản lý cơ sở dữ liệu. Bắt đầu nhận công việc Freelance về <b>Config Game Server (ARK/ZZZ)</b>, tối ưu hóa bộ nhớ và giảm latency.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>2025 - Full-Stack & Thương hiệu</h3>
+                        <p>Phát triển toàn diện sang Full-stack Web (React/JS). Xây dựng thương hiệu cá nhân Quuanghh và đặt mục tiêu trở thành Kỹ sư Phần mềm Chuyên sâu (Senior Dev).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-marquee reveal">
+            <div class="marquee-content">
+                <span><i class="fa-brands fa-cuttlefish"></i> C++</span>
+                <span><i class="fa-brands fa-python"></i> Python</span>
+                <span><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span><i class="fa-brands fa-react"></i> React</span>
+                <span><i class="fa-brands fa-git-alt"></i> Git</span>
+                <span><i class="fa-brands fa-linux"></i> Linux</span>
+                <span><i class="fa-brands fa-cuttlefish"></i> C++</span>
+                <span><i class="fa-brands fa-python"></i> Python</span>
+                <span><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span><i class="fa-brands fa-react"></i> React</span>
+            </div>
+        </section>
+        
+        <footer><p>© 2025 Đinh Quang Hào. Made with <i class="fa-solid fa-heart" style="color: #ff4757;"></i></p></footer>
+    </div>
+
+    <div id="page-love" class="page-section">
+        <div class="love-page-container">
+            <div class="love-card-premium">
+                <div class="love-content">
+
+                    <h2 class="love-title"></h2>
+
+                    <div class="main-heart-container">
+                        <i class="fa-solid fa-cake-candles main-heart-icon"></i>
+
+                        <div class="days-counter">
+                            <span id="lifeDays">0</span>
+                            <p class="days-label">Ngày</p>
+                        </div>
+                    </div>
+                        
+                    <div class="love-timer-mini" id="lifeTimer">
+                        <div class="time-unit">
+                            <span id="lifeHours">00</span>
+                            <p>Giờ</p>
+                        </div>
+
+                        <span class="time-divider">:</span>
+
+                        <div class="time-unit">
+                            <span id="lifeMinutes">00</span>
+                            <p>Phút</p>
+                        </div>
+
+                        <span class="time-divider">:</span>
+
+                        <div class="time-unit">
+                            <span id="lifeSeconds">00</span>
+                            <p>Giây</p>
+                        </div>
+                    </div>
+
+                    <div style="margin: 30px 0; font-size: 1.8rem; color: var(--text-sub);">
+                        <i class="fa-solid fa-code" style="margin: 0 15px; color: var(--primary);"></i>
+                        <i class="fa-solid fa-brain" style="margin: 0 15px; color: #ff4757;"></i>
+                    </div>
+
+                    <p class="love-quote-premium">
+                        "Sinh ra để <b>Code</b>, học hỏi và xây dựng tương lai.<br>
+                        Mỗi ngày trôi qua là một bước tiến gần hơn tới mục tiêu."
+                    </p>
+
+                </div>
+
+                <div class="love-bg-effect"></div>
+
+            </div>
+        </div>
+    </div>
+    <div id="page-crush" class="page-section">
+
+        <section class="container reveal">
+
+            <h2 class="section-title">Người Đặc Biệt</h2>
+
+            <div class="glass-card" style="text-align:center">
+
+
+                <img src="crush.jpg" alt="Chưa có ảnh"
+                style="width:180px;height:180px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
+
+                <h3>Ai vậy ta?</h3>
+
+                <p style="color:var(--text-sub);margin-top:10px;">
+                    Người khiến mình muốn muốn gặp mỗi ngày.
+                    Chỉ là Khoảng cách quá xa.
+                </p>
+
+                <div style="margin-top:25px">
+
+                    <p><b>Lần đầu gặp:</b> Bí mật</p>
+                    <p><b>Ấn tượng:</b> Bí mật</p>
+                    <p><b>Sở thích:</b> đang tìm hiểu</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <div id="zaloModal" class="qr-modal" onclick="toggleZaloQR()">
+        <div class="qr-content" onclick="event.stopPropagation()">
+            <img src="zalo-qr.png" alt="Quét Zalo của tôi">
+            <p>Quét mã để kết nối Zalo</p>
+            <button onclick="toggleZaloQR()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
