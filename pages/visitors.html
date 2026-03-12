@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Visitor Dashboard</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+h1{
+    margin-top:30px;
+}
+
+table{
+    width:90%;
+    margin:30px auto;
+    border-collapse:collapse;
+    background:#1e293b;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th{
+    background:#2563eb;
+    padding:12px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #334155;
+}
+
+tr:hover{
+    background:#334155;
+}
+
+.ip{color:#22c55e;}
+.city{color:#facc15;}
+.country{color:#38bdf8;}
+
+.device{
+    font-size:12px;
+    color:#cbd5f5;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌍 Visitor Tracker</h1>
+
+<table>
+
+<thead>
+<tr>
+<th>IP</th>
+<th>City</th>
+<th>Country</th>
+<th>Device</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody id="visitorTable"></tbody>
+
+</table>
+
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "API_KEY",
+authDomain: "PROJECT.firebaseapp.com",
+projectId: "PROJECT_ID",
+storageBucket: "PROJECT.appspot.com",
+messagingSenderId: "ID",
+appId: "APP_ID"
+
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const table = document.getElementById("visitorTable");
+
+async function loadVisitors(){
+
+    const querySnapshot = await getDocs(collection(db,"visitors"));
+
+    querySnapshot.forEach(doc=>{
+
+        const v = doc.data();
+
+        table.innerHTML += `
+        <tr>
+            <td class="ip">${v.ip}</td>
+            <td class="city">${v.city}</td>
+            <td class="country">${v.country}</td>
+            <td class="device">${v.device}</td>
+            <td>${v.time}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+loadVisitors();
+
+</script>
+
+</body>
+</html>

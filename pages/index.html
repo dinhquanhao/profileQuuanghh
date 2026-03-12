@@ -42,7 +42,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -80,8 +80,8 @@
         <section class="hero reveal">
             <div class="container">
                 <div class="avatar-wrapper">
-                    <img src="avatar.jpg.png" 
-                             onerror="this.src='avatar.jpg'; this.onerror=function(){this.src='https://cdn-icons-png.flaticon.com/512/11498/11498793.png'}" 
+                    <img src="../assets/images/avatar.png"
+                             onerror="this.src='../assets/images/avatar.jpg'; this.onerror=function(){this.src='https://cdn-icons-png.flaticon.com/512/11498/11498793.png'}" 
                              alt="Avatar" class="avatar-img">
                     <div class="status-dot"></div>
                 </div>
@@ -405,12 +405,13 @@
 
     <div id="zaloModal" class="qr-modal" onclick="toggleZaloQR()">
         <div class="qr-content" onclick="event.stopPropagation()">
-            <img src="zalo-qr.png" alt="Quét Zalo của tôi">
+            <img src="../assets/images/zalo-qr.png" alt="Quét Zalo của tôi">
             <p>Quét mã để kết nối Zalo</p>
             <button onclick="toggleZaloQR()">Đóng</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
+    <script type="module" src="../js/tracker.js"></script>
 </body>
 </html>
