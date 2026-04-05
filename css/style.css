@@ -312,9 +312,34 @@ header {
 .typing-text { color: var(--accent); font-weight: 700; }
 .cursor { animation: blink 1s infinite; margin-left: 2px; }
 @keyframes blink { 50% { opacity: 0; } }
-.social-links { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
-.social-icon { width: 45px; height: 45px; border-radius: 50%; background: var(--glass); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-main); font-size: 1.2rem; transition: 0.3s; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.social-icon:hover { transform: translateY(-5px); color: white; border-color: transparent; }
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.social-icon { 
+    width: 45px; 
+    height: 45px; 
+    border-radius: 50%; 
+    background: var(--glass); 
+    border: 1px solid var(--border); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+     color: var(--text-main); 
+     font-size: 1.2rem; transition: 0.3s; 
+     text-decoration: none; 
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+}
+
+.social-icon:hover { 
+    transform: translateY(-5px); 
+    color: white; 
+    border-color: 
+    transparent;
+}
 
 .fb:hover { background: #1877F2; } 
 .mess:hover { background: #00B2FF; } 
@@ -331,6 +356,12 @@ header {
     color: #ff0050; 
     box-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
     border-color: #2af5ff;
+}
+
+.social-icon.lemon8 img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }
 
 .gh:hover { 
