@@ -41,3 +41,8 @@ tr:nth-child(even){
 tr:hover{
     background:#e8f4ff;
 }
+.table-scroll { overflow-x: auto; }
+td { overflow-wrap: anywhere; }
+form label { display: block; margin: 12px 0; }
+input, button { padding: 8px; max-width: 100%; box-sizing: border-box; }
+@media (max-width: 600px) { body { padding: 12px; } .table-container { padding: 12px; } }

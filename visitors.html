@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Quản lý lượt truy cập</title>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <main class="table-container">
+        <a href="./index.html">Về trang chủ</a>
+        <h1>Quản lý lượt truy cập</h1>
+        <p id="visitorStatus" role="status">Đang khởi tạo…</p>
+        <form id="visitorLogin" hidden>
+            <label>Email <input name="email" type="email" autocomplete="username" required></label>
+            <label>Mật khẩu <input name="password" type="password" autocomplete="current-password" required></label>
+            <button type="submit">Đăng nhập</button>
+        </form>
+        <button id="visitorLogout" type="button" hidden>Đăng xuất</button>
+        <div class="table-scroll">
+            <table><thead><tr><th scope="col">Trang</th><th scope="col">Thời gian</th></tr></thead>
+            <tbody id="visitorTable"></tbody></table>
+        </div>
+    </main>
+    <script type="module" src="./js/visitors.js"></script>
+</body>
+</html>
