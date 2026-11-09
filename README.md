@@ -1,4 +1,4 @@
-# Quuanghh — website cá nhân
+# Quuanghh — portfolio cá nhân
 
 Website tĩnh HTML/CSS/JavaScript, không cần npm install hay bước build.
 
@@ -17,21 +17,63 @@ Node.js dùng để kiểm tra cú pháp:
 for f in js/*.js; do node --check "$f" || exit; done
 ```
 
-Kiểm tra trang chủ và các tab Hồ Sơ, Happy birthday, Love; đổi giao diện sáng/tối,
-phóng ảnh đại diện, mở liên kết bài hát. Các mục nội dung hiển thị ngay cả khi JavaScript bị tắt.
-Các tab tương tác và đồng hồ cần JavaScript. Kiểm tra Network để phát hiện tài nguyên lỗi.
+Kiểm tra ba mục **Hồ sơ**, **Dự án**, **Hành trình**; đổi giao diện sáng/tối,
+phóng ảnh đại diện, mở QR Zalo và tải CV. Liên kết `#home`, `#projects`, `#journey`
+hỗ trợ mở trực tiếp, tải lại và nút quay lại/tiến của trình duyệt.
+Khi JavaScript bị tắt, tất cả mục hiển thị trên cùng một trang và menu dùng liên kết neo.
+Các nút chỉ dùng JavaScript được ẩn; nội dung và liên kết tải CV vẫn sử dụng được.
+
+## Kiểm thử trình duyệt và tạo tài nguyên
+
+Các công cụ phát triển tùy chọn cần Python Playwright và Chromium. Trong môi trường
+đám mây đã thiết lập, cả hai đã có sẵn. Nếu máy khác chưa có Playwright, cài vào virtualenv:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install playwright
+```
+
+Cài Chromium bằng trình quản lý gói của hệ điều hành. Mặc định script dùng
+`/usr/bin/chromium`; đặt `CHROMIUM_PATH` nếu trình duyệt nằm ở vị trí khác.
+
+```sh
+python3 tests/smoke.py
+python3 scripts/render-assets.py
+```
+
+Bộ smoke test tự mở máy chủ tại cổng trống, kiểm tra điều hướng/lịch sử, theme,
+trường hợp storage bị chặn, bàn phím, QR, tải PDF, layout ở 320/390/768px,
+nội dung không có JavaScript, chế độ in và hai trang quản lý khi Firebase tắt.
+Chỉ Google Analytics được thay bằng phản hồi rỗng trong kiểm thử để không gửi sự kiện thử nghiệm.
+
+`render-assets.py` tạo lại ảnh chụp dự án và CV PDF một trang từ `cv.html` bằng trình duyệt
+thật. Chạy lại khi chỉnh phần đầu portfolio hoặc nội dung CV; commit cả các file sinh ra.
 
 ## Các file chính
 
 - `index.html`: nội dung website.
 - `css/style.css`: giao diện responsive và hiệu ứng.
-- `js/script.js`: chuyển tab, đồng hồ, tính tuổi, giao diện sáng/tối.
+- `js/script.js`: điều hướng, đồng hồ, giao diện sáng/tối và tương tác bàn phím.
+- `cv.html`, `css/cv.css`, `js/cv.js`: CV dạng web, hỗ trợ in.
+- `assets/dinh-quang-hao-cv.pdf`: CV tải xuống.
+- `assets/images/portfolio-preview.png`: ảnh chụp thật của website.
 - `assets/images/`: ảnh, bao gồm `zalo-qr.png.png` (giữ tên file gốc).
 - `admin.html`, `visitors.html`: cùng một bảng quản lý lượt truy cập.
 - `js/firebase-config.js`: cấu hình Firebase dùng chung, mặc định tắt.
 
-Danh sách nhạc mở tìm kiếm YouTube vì repo chưa cung cấp ID video thật.
-Ảnh trong tab Love dùng ảnh đại diện hiện có; thay bằng ảnh riêng khi có tài nguyên phù hợp.
+## Nội dung và triển khai
+
+- Dự án được giới thiệu là chính repository này; các số liệu hiệu năng và dự án chưa có
+  mã nguồn minh chứng đã được bỏ. Kỹ năng phân biệt giữa định hướng học tập và phần đã thực hành.
+- CV dùng thông tin liên hệ và hành trình có sẵn trong portfolio; không thêm bằng cấp,
+  chứng chỉ hay kinh nghiệm làm việc chưa được cung cấp. Cập nhật `cv.html` khi có thông tin mới.
+- GitHub trỏ tới `dinhquanhao`; canonical, Open Graph và JSON-LD dùng địa chỉ GitHub Pages
+  dự kiến `https://dinhquanhao.github.io/profileQuuanghh/`. Nếu triển khai tên miền khác,
+  cập nhật các URL này trong `index.html`. Địa chỉ metadata không tự bật GitHub Pages.
+- Danh sách nhạc trong mục mở rộng của Hành trình mở tìm kiếm YouTube.
+- Giao diện dùng font hệ thống và tài nguyên nội bộ, không cần CDN cho font hoặc icon.
+- Footer cập nhật năm bằng JavaScript; giá trị HTML dự phòng là năm chỉnh sửa gần nhất.
 
 ## Firebase và quản lý lượt truy cập (tùy chọn)
 
@@ -58,6 +100,6 @@ Rules cho phép tạo bản ghi ẩn danh với hai trường hợp lệ; đây 
 Trước khi dùng tracking công khai ở quy mô lớn, cấu hình App Check và giám sát hạn mức.
 Chưa xác minh Firebase trực tiếp khi chưa có dự án thật và tài khoản quản trị.
 
-Fonts/icons dùng Google Fonts và cdnjs; analytics Google hiện có trong `index.html`.
+Google Analytics hiện có trong `index.html` và cần truy cập dịch vụ Google tương ứng.
 Tùy chọn tracking Firebase ở trên chỉ điều khiển tracker của repo, không điều khiển Google Analytics.
 Các tính năng bên ngoài cần kết nối đến dịch vụ tương ứng.
